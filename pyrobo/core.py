@@ -179,7 +179,7 @@ class TMatrix:
     def __mul__(self, other):
         if self._radians != other.radians:
             raise Exception("DivergentRadiansArgument")
-        return TMatrix(matrix=self.matrix.dot(other.matrix), radians=False)
+        return TMatrix(matrix=self.matrix.dot(other.matrix), radians=self._radians)
 
     def __eq__(self, other):
         if isinstance(other, TMatrix):
@@ -192,4 +192,4 @@ if __name__ == '__main__':
     t1 = TMatrix(0, 0, 0, 0, radians=False)
     t2 = TMatrix(-90, 1, 0, 45, radians=False)
     t3 = TMatrix(0, 1, 0, 0, radians=False)
-    t4 = t1 * t2 * t3
+    t4 = t3 * t2 * t1
